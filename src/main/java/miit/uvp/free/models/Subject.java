@@ -2,6 +2,8 @@ package miit.uvp.free.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "subjects")
 public class Subject extends BaseEntity  {
@@ -14,7 +16,8 @@ public class Subject extends BaseEntity  {
         this.counthours = counthours;
     }
 
-    //@OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "subject")
+    private List<TeacherSubject> teacherSubjects;
 
     protected Subject() {}
 

@@ -1,15 +1,24 @@
 package miit.uvp.free;
 
+import org.modelmapper.*;
+import org.modelmapper.config.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class FreeApplication {
 
-    public static void main(String[] args) {
+    @Bean
+    public ModelMapper modelMapper(){
+        ModelMapper modelMapper = new ModelMapper();
 
-        SpringApplication.run(FreeApplication.class, args);
+        modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
 
-
+        return modelMapper;
     }
+
+    public static void main(String[] args) { SpringApplication.run(FreeApplication.class, args); }
 }
