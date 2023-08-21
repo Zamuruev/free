@@ -1,4 +1,4 @@
-/*
+
 package miit.uvp.free.models;
 
 import jakarta.persistence.*;
@@ -28,4 +28,3 @@ public class Student extends BaseEntity{
     public void setSchoolClass(SchoolClass schoolClass){this.schoolClass=schoolClass;}
 
 }
-*/
