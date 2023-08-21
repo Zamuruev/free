@@ -15,6 +15,9 @@ public class Teacher extends BaseEntity {
     @OneToMany(mappedBy = "teacher")
     private List<TeacherSubject> teacherSubjects;
 
+    @OneToMany(mappedBy = "teacher")
+    private List<SchoolClassTeacher> schoolClassTeachers;
+
     public Teacher(String position) {
         this.position = position;
     }

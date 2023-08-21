@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
+
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,6 +21,9 @@ public class SchoolClass extends BaseEntity{
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "schoolClass")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Student> students;
+
+    @OneToMany(mappedBy = "schoolClass")
+    private List<SchoolClassTeacher> schoolClassTeachers;
 
     public SchoolClass(int countst){
         setCountst(countst);
