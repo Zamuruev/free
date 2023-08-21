@@ -1,6 +1,9 @@
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.StudentDTO;
+import miit.uvp.free.models.SchoolClass;
+import miit.uvp.free.models.Student;
+import miit.uvp.free.repositories.SchoolClassRepository;
 import miit.uvp.free.repositories.StudentRepository;
 import miit.uvp.free.services.StudentService;
 import org.modelmapper.ModelMapper;
@@ -18,6 +21,22 @@ public class StudentServiceImpl implements StudentService<Long> {
     private StudentRepository studentRepository;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private SchoolClassRepository schoolClassRepository;
+
+    @Override
+    public StudentDTO register(StudentDTO student){
+        Student s = modelMapper.map(student,Student.class);
+        if(student.getSchoolClass().getId()!=0){
+            SchoolClass sc = schoolClassRepository.findById(student.getSchoolClass().getId()).get();
+            s.setSchoolClass(sc);
+        }
+        return modelMapper.map(studentRepository.save(s),StudentDTO.class);
+    }
+
+    @Override
+    public void expel(StudentDTO student){studentRepository.deleteById(student.getId());}
 
     @Override
     public Optional<StudentDTO> findStudent(Long id){

@@ -33,4 +33,8 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     public List<SchoolClassDTO> findSchoolClassByStudent(String nameStudent){
         return schoolClassRepository.findSchoolClassByName(nameStudent).stream().map((s)->modelMapper.map(s,SchoolClassDTO.class)).collect(Collectors.toList());
     }
+
+    @Override
+    public void expel(SchoolClassDTO schoolClass){schoolClassRepository.deleteById(schoolClass.getId());}
+
 }
