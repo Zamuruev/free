@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.repositories;
 
 import miit.uvp.free.models.SchoolClass;
@@ -11,3 +12,4 @@ import java.util.List;
 public interface SchoolClassRepository extends JpaRepository<SchoolClass,Long> {
     List<Student>findSchoolClassByName(String nameStudent);
 }
+*/

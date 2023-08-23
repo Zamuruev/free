@@ -3,21 +3,15 @@ package miit.uvp.free.models;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
 
 import java.util.List;
 import java.util.Set;
-
-
 
 import java.util.HashSet;
 
 @Entity
 @Table(name = "schoolclasses")
-public class SchoolClass extends BaseEntity{
-
-    private int countst;
+public class SchoolClass extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "schoolClass")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Student> students;
@@ -25,16 +19,27 @@ public class SchoolClass extends BaseEntity{
     @OneToMany(mappedBy = "schoolClass")
     private List<SchoolClassTeacher> schoolClassTeachers;
 
-    public SchoolClass(int countst){
-        setCountst(countst);
+    public SchoolClass(String name){
+        setName(name);
         students = new HashSet<Student>();
     }
-    protected SchoolClass(){}
+    protected SchoolClass() {}
 
-    @Column(name = "count of students",length = 2,nullable = false)
-    public int getCountst(){return countst;}
-    public void setCountst(int countst){this.countst=countst;}
-    public Set<Student> getStudents(){return students;}
-    public void setStudents(Set<Student> students){this.students= students;}
+    public Set<Student> getStudents() { return students; }
 
+    public void setStudents(Set<Student> students) {
+        int count = 1;
+        for (Student item : students) {
+            if(count <= 3) {
+                this.students.add(item);
+            }
+            else {
+                System.out.println(
+                      "Student with id = " + item.id + ", name = " + item.name + ", cannot be added. No place!"
+                );
+            }
+            count++;
+        }
+    }
 }
+

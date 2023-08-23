@@ -2,7 +2,8 @@ package miit.uvp.free.models;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "teachers")
@@ -13,17 +14,20 @@ public class Teacher extends BaseEntity {
     private String position;
 
     @OneToMany(mappedBy = "teacher")
-    private List<TeacherSubject> teacherSubjects;
+    private Set<TeacherSubject> teacherSubjects;
 
     @OneToMany(mappedBy = "teacher")
-    private List<SchoolClassTeacher> schoolClassTeachers;
+    private Set<SchoolClassTeacher> schoolClassTeachers;
 
-    public Teacher(String position) {
+    public Teacher(String position, String name) {
         this.position = position;
+        this.name = name;
+        this.teacherSubjects = new HashSet<TeacherSubject>();
+        this.schoolClassTeachers = new HashSet<SchoolClassTeacher>();
     }
 
     // Пустой конструктор для Hibernate
-    protected Teacher() {    }
+    protected Teacher() {}
 
     private void setPosition(String position) { this.position = position; }
 

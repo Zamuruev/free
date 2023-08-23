@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.dtos;
 
 public class StudentDTO {
@@ -37,3 +38,4 @@ public class StudentDTO {
         this.schoolClass = schoolClass;
     }
 }
+*/

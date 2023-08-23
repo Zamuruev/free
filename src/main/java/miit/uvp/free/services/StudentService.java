@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services;
 
 import miit.uvp.free.dtos.StudentDTO;
@@ -13,3 +14,4 @@ public interface StudentService<ID> {
     List<StudentDTO> findStudentsBySchoolClass(String schoolClass);
 
 }
+*/

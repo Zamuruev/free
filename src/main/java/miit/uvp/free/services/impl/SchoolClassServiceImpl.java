@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
@@ -38,3 +39,4 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     public void expel(SchoolClassDTO schoolClass){schoolClassRepository.deleteById(schoolClass.getId());}
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.dtos;
 
 public class SchoolClassDTO {
@@ -17,3 +18,4 @@ public class SchoolClassDTO {
     public void setName(String name) {this.name = name;}
 
 }
+*/

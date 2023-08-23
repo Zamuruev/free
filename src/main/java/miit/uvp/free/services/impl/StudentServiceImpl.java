@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.StudentDTO;
@@ -53,3 +54,4 @@ public class StudentServiceImpl implements StudentService<Long> {
         return studentRepository.findAllBySchoolClassName(schoolclass).stream().map((s)->modelMapper.map(s,StudentDTO.class)).collect(Collectors.toList());
     }
 }
+*/
