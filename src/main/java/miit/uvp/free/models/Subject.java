@@ -16,6 +16,9 @@ public class Subject extends BaseEntity {
     @OneToMany(mappedBy = "subject")
     private Set<TeacherSubject> teacherSubjects;
 
+    @OneToMany(mappedBy = "subject")
+    private Set<SchoolClassSubject> schoolClassSubjects;
+
     public Subject(int counthours) {
         this.counthours = counthours;
         this.teacherSubjects = new HashSet<TeacherSubject>();

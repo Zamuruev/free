@@ -20,7 +20,7 @@ public class Student extends BaseEntity {
         setLearnBasis(learnBasis);
         setName(name);
     }
-    protected Student(){};
+    protected Student() {};
 
     public String getLearnBasis() {
         return learnBasis;

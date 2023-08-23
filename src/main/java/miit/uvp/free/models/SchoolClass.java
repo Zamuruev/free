@@ -19,6 +19,9 @@ public class SchoolClass extends BaseEntity {
     @OneToMany(mappedBy = "schoolClass")
     private List<SchoolClassTeacher> schoolClassTeachers;
 
+    @OneToMany(mappedBy = "schoolClass")
+    private List<SchoolClassSubject> schoolClassSubjects;
+
     public SchoolClass(String name){
         setName(name);
         students = new HashSet<Student>();
