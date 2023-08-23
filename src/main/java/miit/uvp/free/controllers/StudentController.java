@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,3 +22,4 @@ public class StudentController {
     void deleteStudent(@PathVariable Long id){studentService.expel(id);}
 
 }
+*/

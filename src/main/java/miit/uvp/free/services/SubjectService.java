@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services;
 
 import java.util.Optional;
@@ -7,3 +8,4 @@ public interface SubjectService<ID> {
     Optional<SubjectDTO> findSubject(ID id);
     List<SubjectDTO> getAll();
 }
+*/

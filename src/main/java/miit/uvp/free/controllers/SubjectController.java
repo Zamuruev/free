@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.controllers;
 
 import miit.uvp.free.services.SubjectService;
@@ -22,3 +23,4 @@ public class SubjectController {
     void deleteSubject(@PathVariable Long id){subjectService.expel(id);}
 
 }
+*/

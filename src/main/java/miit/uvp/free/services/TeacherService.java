@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services;
 
 import java.util.List;
@@ -8,3 +9,4 @@ public interface TeacherService<ID> {
     Optional<TeacherDTO> findTeacher(ID id);
     List<TeacherDTO> getAll();
 }
+*/

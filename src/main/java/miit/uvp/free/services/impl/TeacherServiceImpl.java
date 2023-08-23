@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.services.TeacherService;
@@ -22,3 +23,4 @@ public class TeacherServiceImpl implements TeacherService<Long> {
     public Optional<TeacherDTO> getAll(){return teacherRepository.findAll().stream().map((s)->modelMapper.map(s,TeacherDTO.class)).collect(Collectors.toList());}
 
 }
+*/

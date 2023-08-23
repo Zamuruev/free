@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.controllers;
 
 import miit.uvp.free.models.SchoolClass;
@@ -13,8 +14,10 @@ public class SchoolClassController {
     @GetMapping("/school_classes")
     Iterable<SchoolClassDTO> all(){return schoolClassService.getAll();}
 
-    /*@PostMapping("/school_class_new")
-    SchoolClassDTO newSchoolClass(@RequestBody SchoolClassDTO newSchoolClass){return schoolClassService.register(newSchoolClass);}*/
+    */
+/*@PostMapping("/school_class_new")
+    SchoolClassDTO newSchoolClass(@RequestBody SchoolClassDTO newSchoolClass){return schoolClassService.register(newSchoolClass);}*//*
+
 
     @GetMapping("/school_class/{id}")
     SchoolClassDTO one(@PathVariable Long id){return (SchoolClassDTO) schoolClassService.findSchoolClass(id);}
@@ -22,3 +25,4 @@ public class SchoolClassController {
     @DeleteMapping("/school_class_delete/{id}")
     void deleteSchoolClass(@PathVariable Long id){schoolClassService.expel(id);}
 }
+*/

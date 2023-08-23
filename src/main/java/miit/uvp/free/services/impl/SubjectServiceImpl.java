@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.services.impl;
 
 import com.fasterxml.jackson.annotation.OptBoolean;
@@ -28,3 +29,4 @@ public class SubjectServiceImpl implements SubjectService<Long> {
 
 
 }
+*/

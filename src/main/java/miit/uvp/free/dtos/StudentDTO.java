@@ -4,13 +4,16 @@ package miit.uvp.free.dtos;
 public class StudentDTO {
     private Long id;
     private String name;
+    private String learnBasis;
     private SchoolClassDTO schoolClass;
 
-    public StudentDTO(Long id, String name, SchoolClassDTO schoolClass){
-        this.id= id;
-        this.name=name;
-        this.schoolClass=schoolClass;
+    public StudentDTO(Long id, String name, String learnBasis, SchoolClassDTO schoolClass) {
+        this.id = id;
+        this.name = name;
+        this.learnBasis = learnBasis;
+        this.schoolClass = schoolClass;
     }
+
     public StudentDTO() {}
 
     public Long getId() { return id; }
@@ -26,5 +29,14 @@ public class StudentDTO {
     public void setSchoolClass(SchoolClassDTO schoolClass) {
         this.schoolClass = schoolClass;
     }
+
+    public String getLearnBasis() {
+        return learnBasis;
+    }
+
+    public void setLearnBasis(String learnBasis) {
+        this.learnBasis = learnBasis;
+    }
+
 }
 

@@ -1,3 +1,4 @@
+/*
 package miit.uvp.free.controllers;
 
 import miit.uvp.free.services.TeacherService;
@@ -19,3 +20,4 @@ public class TeacherController {
     void deleteTeacher(@PathVariable Long id){teacherService.expel(id);}
 
 }
+*/
