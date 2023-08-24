@@ -1,7 +1,7 @@
-/*
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
+import miit.uvp.free.models.SchoolClass;
 import miit.uvp.free.repositories.SchoolClassRepository;
 import miit.uvp.free.services.SchoolClassService;
 import org.modelmapper.ModelMapper;
@@ -36,7 +36,12 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     }
 
     @Override
-    public void expel(SchoolClassDTO schoolClass){schoolClassRepository.deleteById(schoolClass.getId());}
+    public void expel(Long id){schoolClassRepository.deleteById(id);}
+
+    @Override
+    public SchoolClassDTO register(SchoolClassDTO schoolClass){
+        SchoolClass sc = modelMapper.map(schoolClass,SchoolClass.class);
+        return modelMapper.map(schoolClassRepository.save(sc),SchoolClassDTO.class);
+    }
 
 }
-*/

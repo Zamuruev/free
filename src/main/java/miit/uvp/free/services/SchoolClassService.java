@@ -10,6 +10,8 @@ public interface SchoolClassService<ID> {
     Optional<SchoolClassDTO> findSchoolClass(ID id);
     List<SchoolClassDTO> getAll();
     List<SchoolClassDTO> findSchoolClassByStudent(String nameStudent);
-    void expel(SchoolClassDTO schoolClass);
+    void expel(ID id);
+
+    SchoolClassDTO register(SchoolClassDTO schoolClass);
 
 }
