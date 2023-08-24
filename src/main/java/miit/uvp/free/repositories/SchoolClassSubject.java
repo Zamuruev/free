@@ -7,6 +7,5 @@ import java.util.List;
 
 @Repository
 public interface SchoolClassSubject extends JpaRepository<SchoolClassSubject,Long> {
-    List<SchoolClassSubject> findAllBySchoolClassName(String name);
 
 }
