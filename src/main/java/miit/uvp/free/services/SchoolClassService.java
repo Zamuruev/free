@@ -1,4 +1,3 @@
-/*
 package miit.uvp.free.services;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
@@ -14,4 +13,3 @@ public interface SchoolClassService<ID> {
     void expel(SchoolClassDTO schoolClass);
 
 }
-*/
