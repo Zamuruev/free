@@ -1,4 +1,3 @@
-
 package miit.uvp.free.repositories;
 
 import miit.uvp.free.models.Teacher;
@@ -20,6 +19,12 @@ public interface TeacherRepository extends JpaRepository<Teacher,Long> {
 
     @Query("SELECT t FROM Teacher t JOIN t.schoolClassTeachers sct JOIN sct.schoolClass sc WHERE sc.id = :schoolClassId")
     List<Teacher> findAllBySchoolClassId(@Param("schoolClassId") Long schoolClassId);
+
+    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.subject s WHERE s.id = :subjectId")
+    List<Teacher> findAllBySubjectId(@Param("subjectId") Long subjectId);
+
+    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.subject s WHERE s.name = :subjectName")
+    List<Teacher> findAllBySubjectName(@Param("subjectName") String subjectName);
 
 }
 
