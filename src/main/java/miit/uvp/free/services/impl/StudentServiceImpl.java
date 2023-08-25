@@ -1,6 +1,6 @@
-/*
 package miit.uvp.free.services.impl;
 
+import miit.uvp.free.dtos.SchoolClassDTO;
 import miit.uvp.free.dtos.StudentDTO;
 import miit.uvp.free.models.SchoolClass;
 import miit.uvp.free.models.Student;
@@ -8,7 +8,6 @@ import miit.uvp.free.repositories.SchoolClassRepository;
 import miit.uvp.free.repositories.StudentRepository;
 import miit.uvp.free.services.StudentService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,24 @@ public class StudentServiceImpl implements StudentService<Long> {
     }
 
     @Override
-    public void expel(StudentDTO student){studentRepository.deleteById(student.getId());}
+    public void expel(StudentDTO student) { studentRepository.deleteById(student.getId()); }
+
+    @Override
+    public void expel(Long id) { studentRepository.deleteById(id); }
+
+    @Override
+    public void transfer(StudentDTO student, SchoolClassDTO schoolClass) {
+        Student s = studentRepository.findById(student.getId()).get();
+        if(s.getSchoolClass().getId() != 0) {
+            SchoolClass sch = schoolClassRepository.findById(schoolClass.getId()).get();
+            if(sch.getId() != 0) {
+                SchoolClass sch1 = schoolClassRepository.findById(s.getSchoolClass().getId()).get();
+
+            }
+        }
+
+
+    }
 
     @Override
     public Optional<StudentDTO> findStudent(Long id){
@@ -54,4 +70,3 @@ public class StudentServiceImpl implements StudentService<Long> {
         return studentRepository.findAllBySchoolClassName(schoolclass).stream().map((s)->modelMapper.map(s,StudentDTO.class)).collect(Collectors.toList());
     }
 }
-*/

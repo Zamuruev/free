@@ -11,7 +11,6 @@ public interface SchoolClassService<ID> {
     List<SchoolClassDTO> getAll();
     List<SchoolClassDTO> findSchoolClassByStudent(String nameStudent);
     void expel(ID id);
-
     SchoolClassDTO register(SchoolClassDTO schoolClass);
 
 }
