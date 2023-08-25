@@ -36,23 +36,14 @@ public class StudentServiceImpl implements StudentService<Long> {
     }
 
     @Override
-    public void expel(StudentDTO student) { studentRepository.deleteById(student.getId()); }
-
-    @Override
     public void expel(Long id) { studentRepository.deleteById(id); }
 
     @Override
     public void transfer(StudentDTO student, SchoolClassDTO schoolClass) {
         Student s = studentRepository.findById(student.getId()).get();
-        if(s.getSchoolClass().getId() != 0) {
-            SchoolClass sch = schoolClassRepository.findById(schoolClass.getId()).get();
-            if(sch.getId() != 0) {
-                SchoolClass sch1 = schoolClassRepository.findById(s.getSchoolClass().getId()).get();
-
-            }
-        }
-
-
+        SchoolClass sch = schoolClassRepository.findById(schoolClass.getId()).get();
+        s.setSchoolClass(sch);
+        studentRepository.save(s);
     }
 
     @Override
@@ -66,7 +57,7 @@ public class StudentServiceImpl implements StudentService<Long> {
     }
 
     @Override
-    public List<StudentDTO> findStudentsBySchoolClass(String schoolclass){
-        return studentRepository.findAllBySchoolClassName(schoolclass).stream().map((s)->modelMapper.map(s,StudentDTO.class)).collect(Collectors.toList());
+    public List<StudentDTO> findStudentsBySchoolClassName(String schoolclassName){
+        return studentRepository.findAllBySchoolClassName(schoolclassName).stream().map((s)->modelMapper.map(s,StudentDTO.class)).collect(Collectors.toList());
     }
 }

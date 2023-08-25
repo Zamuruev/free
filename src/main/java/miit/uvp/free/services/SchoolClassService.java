@@ -9,7 +9,8 @@ import java.util.Optional;
 public interface SchoolClassService<ID> {
     Optional<SchoolClassDTO> findSchoolClass(ID id);
     List<SchoolClassDTO> getAll();
-    List<SchoolClassDTO> findSchoolClassByStudent(String nameStudent);
+    SchoolClassDTO findSchoolClassByStudentId(Long id);
+
     void expel(ID id);
     SchoolClassDTO register(SchoolClassDTO schoolClass);
 

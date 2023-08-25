@@ -8,12 +8,11 @@ import java.util.Optional;
 
 public interface StudentService<ID> {
     StudentDTO register(StudentDTO student);
-    void expel(StudentDTO student);
     void expel(ID id);
     void transfer(StudentDTO student, SchoolClassDTO schoolClass);
     Optional<StudentDTO> findStudent(ID id);
     List<StudentDTO> getAll();
-    List<StudentDTO> findStudentsBySchoolClass(String schoolClassName);
+    List<StudentDTO> findStudentsBySchoolClassName(String schoolClassName);
 
 }
 

@@ -2,7 +2,9 @@ package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
 import miit.uvp.free.models.SchoolClass;
+import miit.uvp.free.models.Student;
 import miit.uvp.free.repositories.SchoolClassRepository;
+import miit.uvp.free.repositories.StudentRepository;
 import miit.uvp.free.services.SchoolClassService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     private SchoolClassRepository schoolClassRepository;
 
     @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -31,12 +36,18 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     }
 
     @Override
-    public List<SchoolClassDTO> findSchoolClassByStudent(String nameStudent){
-        return schoolClassRepository.findSchoolClassByName(nameStudent).stream().map((s)->modelMapper.map(s,SchoolClassDTO.class)).collect(Collectors.toList());
+    public SchoolClassDTO findSchoolClassByStudentId(Long id) {
+        Optional<Student> s = studentRepository.findById(id);
+        if(s.isPresent()) {
+            Student st = s.get();
+            Optional<SchoolClass> schoolClass = schoolClassRepository.findById(st.getSchoolClass().getId());
+            return modelMapper.map(schoolClassRepository.findSchoolClassById(schoolClass.get().getId()),SchoolClassDTO.class);
+        }
+        return null;
     }
 
     @Override
-    public void expel(Long id){schoolClassRepository.deleteById(id);}
+    public void expel(Long id) { schoolClassRepository.deleteById(id); }
 
     @Override
     public SchoolClassDTO register(SchoolClassDTO schoolClass){
