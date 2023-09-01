@@ -16,17 +16,17 @@ public class SchoolClass extends BaseEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Student> students;
 
-    @OneToMany(mappedBy = "schoolClass")
+    @OneToMany(mappedBy = "id.schoolClass", cascade = CascadeType.ALL)
     private List<SchoolClassTeacher> schoolClassTeachers;
 
-    @OneToMany(mappedBy = "schoolClass")
+    @OneToMany(mappedBy = "id.schoolClass")
     private List<SchoolClassSubject> schoolClassSubjects;
 
     public SchoolClass(String name){
         setName(name);
         students = new HashSet<Student>();
     }
-    protected SchoolClass() {}
+    public SchoolClass() {}
 
     public Set<Student> getStudents() { return students; }
 

@@ -13,10 +13,10 @@ public class Teacher extends BaseEntity {
     @Column(name = "position")
     private String position;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "id.teacher", cascade = CascadeType.ALL)
     private Set<TeacherSubject> teacherSubjects;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "id.teacher", cascade = CascadeType.ALL)
     private Set<SchoolClassTeacher> schoolClassTeachers;
 
     public Teacher(String position, String name) {
@@ -27,7 +27,7 @@ public class Teacher extends BaseEntity {
     }
 
     // Пустой конструктор для Hibernate
-    protected Teacher() {}
+    public Teacher() {}
 
     private void setPosition(String position) { this.position = position; }
 

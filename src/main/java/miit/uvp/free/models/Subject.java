@@ -13,18 +13,19 @@ public class Subject extends BaseEntity {
     @Column(name = "counthours", nullable = false)
     private int counthours;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "id.subject")
     private Set<TeacherSubject> teacherSubjects;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "id.subject")
     private Set<SchoolClassSubject> schoolClassSubjects;
 
-    public Subject(int counthours) {
+    public Subject(String name, int counthours) {
         this.counthours = counthours;
+        this.name = name;
         this.teacherSubjects = new HashSet<TeacherSubject>();
     }
 
-    protected Subject() {}
+    public Subject() {}
 
     public int getCounthours() { return counthours; }
 

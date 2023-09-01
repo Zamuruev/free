@@ -14,16 +14,16 @@ public interface TeacherRepository extends JpaRepository<Teacher,Long> {
     List<Teacher> findAllByPosition(String position);
     Optional<Teacher>findById(Long id);
 
-    @Query("SELECT t FROM Teacher t JOIN t.schoolClassTeachers sct JOIN sct.schoolClass sc WHERE sc.name = :schoolClassName")
-    List<Teacher> findAllBySchoolClassName(@Param("schoolClassName") String schoolClassName);
+    @Query("SELECT sct.id.teacher FROM SchoolClassTeacher sct WHERE sct.id.schoolClass.name = :schoolClassName")
+    List<Teacher> findAllTeachersBySchoolClassName(@Param("schoolClassName") String schoolClassName);
 
-    @Query("SELECT t FROM Teacher t JOIN t.schoolClassTeachers sct JOIN sct.schoolClass sc WHERE sc.id = :schoolClassId")
-    List<Teacher> findAllBySchoolClassId(@Param("schoolClassId") Long schoolClassId);
+    @Query("SELECT sct.id.teacher FROM SchoolClassTeacher sct WHERE sct.id.schoolClass.id = :schoolClassId")
+    List<Teacher> findAllTeachersBySchoolClassId(@Param("schoolClassId") Long schoolClassId);
 
-    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.subject s WHERE s.id = :subjectId")
+    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.id.subject s WHERE s.id = :subjectId")
     List<Teacher> findAllBySubjectId(@Param("subjectId") Long subjectId);
 
-    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.subject s WHERE s.name = :subjectName")
+    @Query("SELECT t FROM Teacher t JOIN t.teacherSubjects ts JOIN ts.id.subject s WHERE s.name = :subjectName")
     List<Teacher> findAllBySubjectName(@Param("subjectName") String subjectName);
 
 }
