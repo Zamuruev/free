@@ -65,7 +65,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         StudentDTO student1 = new StudentDTO();
         student1.setName("Замуруев Роман Романович");
         student1.setLearnBasis("Бюджет");
-        student1.setSchoolClass(saveSchoolClass1);
+        student1.setSchoolClass(saveSchoolClass2);
         studentService.register(student1);
 
         StudentDTO student2 = new StudentDTO();
@@ -73,6 +73,18 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         student2.setLearnBasis("Коммерция");
         student2.setSchoolClass(saveSchoolClass2);
         studentService.register(student2);
+
+        StudentDTO student3 = new StudentDTO();
+        student3.setName("Брежнева Алена Владимировна");
+        student3.setLearnBasis("Бюджет");
+        student3.setSchoolClass(saveSchoolClass2);
+        studentService.register(student3);
+
+        StudentDTO student4 = new StudentDTO();
+        student4.setName("Кривоногов Петр Николаевич");
+        student4.setLearnBasis("Коммерция");
+        student4.setSchoolClass(saveSchoolClass2);
+        studentService.register(student4);
 
         // Создание преподавателей
         TeacherDTO teacher1 = new TeacherDTO();
@@ -83,12 +95,12 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         schoolClassDTOList.add(saveSchoolClass1);
         schoolClassDTOList.add(saveSchoolClass2);
-        TeacherDTO t1 = teacherService.register(teacher1, schoolClassDTOList);
+        teacher1 = teacherService.register(teacher1, schoolClassDTOList);
 
         TeacherDTO teacher2 = new TeacherDTO();
         teacher2.setName("Новиков Александр Иванович");
         teacher2.setPosition("Старший преподаватель");
-        TeacherDTO t2 = teacherService.register(teacher2,schoolClassDTOList);
+        teacher2 = teacherService.register(teacher2,schoolClassDTOList);
 
         List<SchoolClassDTO> schoolClassDTOList1 = new ArrayList<>();
 
@@ -99,16 +111,16 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         SubjectDTO subject1 = new SubjectDTO();
         subject1.setCounthours(20);
         subject1.setName("Математика");
-        SubjectDTO s1 = subjectService.register(subject1,schoolClassDTOList1);
+        subject1 = subjectService.register(subject1,schoolClassDTOList1);
 
         SubjectDTO subject2 = new SubjectDTO();
         subject2.setCounthours(15);
         subject2.setName("Физика");
-        SubjectDTO s2 = subjectService.register(subject2,schoolClassDTOList);
+        subject2 = subjectService.register(subject2,schoolClassDTOList);
 
-        teacherSubjectService.merge(s1,t2);
-        teacherSubjectService.merge(s2,t1);
-
+        teacherSubjectService.merge(subject1,teacher2);
+        teacherSubjectService.merge(subject2,teacher1);
+        teacherSubjectService.merge(subject1,teacher1);
 
     }
 }

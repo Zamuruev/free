@@ -26,9 +26,7 @@ public class StudentDTO {
 
     public SchoolClassDTO getSchoolClass() { return schoolClass; }
 
-    public void setSchoolClass(SchoolClassDTO schoolClass) {
-        this.schoolClass = schoolClass;
-    }
+    public void setSchoolClass(SchoolClassDTO schoolClass) {this.schoolClass = schoolClass;}
 
     public String getLearnBasis() {
         return learnBasis;

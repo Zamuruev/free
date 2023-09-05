@@ -26,13 +26,24 @@ public class StudentServiceImpl implements StudentService<Long> {
     private SchoolClassRepository schoolClassRepository;
 
     @Override
-    public StudentDTO register(StudentDTO student){
+    public StudentDTO register(StudentDTO student) {
         Student s = modelMapper.map(student,Student.class);
-        if(student.getSchoolClass().getId()!=0){
-            SchoolClass sc = schoolClassRepository.findById(student.getSchoolClass().getId()).get();
-            s.setSchoolClass(sc);
+        if(student.getSchoolClass().getId() != 0) {
+            if(studentRepository.findAllBySchoolClassId(student.getSchoolClass().getId()).stream().toArray().length <= 2) {
+                SchoolClass sc = schoolClassRepository.findById(student.getSchoolClass().getId()).get();
+                s.setSchoolClass(sc);
+                student = modelMapper.map(studentRepository.save(s),StudentDTO.class);
+                System.out.println(studentRepository.findAllBySchoolClassId(student.getSchoolClass().getId()).stream().toArray().length);
+            }
+            else {
+                System.out.println();
+                System.out.println();
+                System.out.printf("Студент %s не может быть добавлен в %s класс! Нет мест!",student.getName(), student.getSchoolClass().getName());
+                System.out.println();
+                System.out.println();
+            }
         }
-        return modelMapper.map(studentRepository.save(s),StudentDTO.class);
+        return student;
     }
 
     @Override

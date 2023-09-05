@@ -9,7 +9,6 @@ import miit.uvp.free.models.TeacherSubject;
 import miit.uvp.free.repositories.SubjectRepository;
 import miit.uvp.free.repositories.TeacherRepository;
 import miit.uvp.free.repositories.TeacherSubjectRepository;
-import miit.uvp.free.services.SubjectService;
 import miit.uvp.free.services.TeacherSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

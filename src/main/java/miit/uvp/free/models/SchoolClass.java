@@ -31,18 +31,8 @@ public class SchoolClass extends BaseEntity {
     public Set<Student> getStudents() { return students; }
 
     public void setStudents(Set<Student> students) {
-        int count = 1;
-        for (Student item : students) {
-            if(count <= 3) {
-                this.students.add(item);
-            }
-            else {
-                System.out.println(
-                      "Student with id = " + item.id + ", name = " + item.name + ", cannot be added. No place!"
-                );
-            }
-            count++;
-        }
+        this.students = students;
+
     }
 }
 
