@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface SubjectService<ID> {
 
     SubjectDTO register(SubjectDTO subjectDTO, List<SchoolClassDTO> schoolClasses);
-
     void expel(ID id);
     Optional<SubjectDTO> findSubject(ID id);
     List<SubjectDTO> getAll();

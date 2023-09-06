@@ -16,10 +16,10 @@ public class SchoolClass extends BaseEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Student> students;
 
-    @OneToMany(mappedBy = "id.schoolClass", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id.schoolClass", orphanRemoval = true)
     private List<SchoolClassTeacher> schoolClassTeachers;
 
-    @OneToMany(mappedBy = "id.schoolClass")
+    @OneToMany(mappedBy = "id.schoolClass", orphanRemoval = true)
     private List<SchoolClassSubject> schoolClassSubjects;
 
     public SchoolClass(String name){

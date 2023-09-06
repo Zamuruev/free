@@ -13,7 +13,7 @@ public class Student extends BaseEntity {
     private String learnBasis;
     @ManyToOne(optional = false)
     @JoinColumn(name = "schoolClass_id",referencedColumnName = "id",nullable = false)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade({org.hibernate.annotations.CascadeType.MERGE})
     private SchoolClass schoolClass;
 
     public Student(String learnBasis, String name){

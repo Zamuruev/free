@@ -13,10 +13,10 @@ public class Subject extends BaseEntity {
     @Column(name = "counthours", nullable = false)
     private int counthours;
 
-    @OneToMany(mappedBy = "id.subject")
+    @OneToMany(mappedBy = "id.subject",orphanRemoval = true)
     private Set<TeacherSubject> teacherSubjects;
 
-    @OneToMany(mappedBy = "id.subject")
+    @OneToMany(mappedBy = "id.subject",orphanRemoval = true)
     private Set<SchoolClassSubject> schoolClassSubjects;
 
     public Subject(String name, int counthours) {

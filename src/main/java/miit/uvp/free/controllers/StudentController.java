@@ -28,7 +28,7 @@ public class StudentController {
     void deleteStudent(@PathVariable Long id){studentService.expel(id);}
 
     @GetMapping("/allStudents/{schoolClassName}")
-    List<StudentDTO> findStudentsBySchoolClass(String schoolClassName) {
+    List<StudentDTO> findStudentsBySchoolClassName(@PathVariable("schoolClassName") String schoolClassName) {
         return studentService.findStudentsBySchoolClassName(schoolClassName);
     }
 

@@ -43,7 +43,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         // Создание класса
         SchoolClassDTO schoolClass1 = new SchoolClassDTO();
-        schoolClass1.setName("10A");
+        schoolClass1.setName("10А");
         SchoolClassDTO saveSchoolClass1 = schoolClassService.register(schoolClass1);
 
         // Создание класса
@@ -68,6 +68,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         student1.setSchoolClass(saveSchoolClass2);
         studentService.register(student1);
 
+
         StudentDTO student2 = new StudentDTO();
         student2.setName("Иванов Иван Иванович");
         student2.setLearnBasis("Коммерция");
@@ -83,7 +84,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         StudentDTO student4 = new StudentDTO();
         student4.setName("Кривоногов Петр Николаевич");
         student4.setLearnBasis("Коммерция");
-        student4.setSchoolClass(saveSchoolClass2);
+        student4.setSchoolClass(saveSchoolClass1);
         studentService.register(student4);
 
         // Создание преподавателей
@@ -97,10 +98,13 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         schoolClassDTOList.add(saveSchoolClass2);
         teacher1 = teacherService.register(teacher1, schoolClassDTOList);
 
+
+        List<SchoolClassDTO> schoolClassDTOList2 = new ArrayList<>();
         TeacherDTO teacher2 = new TeacherDTO();
         teacher2.setName("Новиков Александр Иванович");
         teacher2.setPosition("Старший преподаватель");
-        teacher2 = teacherService.register(teacher2,schoolClassDTOList);
+        schoolClassDTOList2.add(saveSchoolClass1);
+        teacher2 = teacherService.register(teacher2,schoolClassDTOList2);
 
         List<SchoolClassDTO> schoolClassDTOList1 = new ArrayList<>();
 

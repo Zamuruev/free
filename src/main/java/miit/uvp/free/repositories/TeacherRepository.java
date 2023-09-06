@@ -1,5 +1,6 @@
 package miit.uvp.free.repositories;
 
+import miit.uvp.free.dtos.TeacherDTO;
 import miit.uvp.free.models.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher,Long> {
-    List<Teacher> findAllByPosition(String position);
+    Optional<Teacher> findAllByPosition(String position);
     Optional<Teacher>findById(Long id);
 
     @Query("SELECT sct.id.teacher FROM SchoolClassTeacher sct WHERE sct.id.schoolClass.name = :schoolClassName")

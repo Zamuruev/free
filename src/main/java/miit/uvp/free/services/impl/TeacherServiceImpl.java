@@ -1,6 +1,5 @@
 package miit.uvp.free.services.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import miit.uvp.free.dtos.SchoolClassDTO;
 import miit.uvp.free.dtos.TeacherDTO;
 import miit.uvp.free.models.SchoolClass;
@@ -56,42 +55,9 @@ public class TeacherServiceImpl implements TeacherService<Long> {
 
     @Override
     @Transactional
-    public void expel(Long id) {
-        /*Optional<Teacher> teacherOptional = teacherRepository.findById(id);
-        if (teacherOptional.isPresent()) {
-            Teacher teacher = teacherOptional.get();
-
-            // Найдем все связи SchoolClassTeacher с этим преподавателем
-            List<SchoolClassTeacher> schoolClassTeachers = schoolClassTeacherRepository.findById_Teacher(teacher);
-
-            for (SchoolClassTeacher schoolClassTeacher : schoolClassTeachers) {
-                SchoolClassTeacher.SchoolClassTeacherId idToRemove = schoolClassTeacher.getId();
-
-                // Создаем новый экземпляр SchoolClassTeacher без этого преподавателя
-                SchoolClassTeacher newSchoolClassTeacher = new SchoolClassTeacher();
-                newSchoolClassTeacher.setId(idToRemove);
-
-                // Удаляем старый экземпляр SchoolClassTeacher
-                schoolClassTeacherRepository.delete(schoolClassTeacher);
-
-                // Сохраняем новый экземпляр SchoolClassTeacher
-                schoolClassTeacherRepository.save(newSchoolClassTeacher);
-            }
-
-            // По желанию, можно также обработать связи TeacherSubject здесь
-
-            teacherRepository.delete(teacher);
-        } else {
-            // Обработка случая, когда преподаватель не найден
-        }*/
+    public void expel(Long id) {teacherRepository.deleteById(id);
     }
 
-
-
-    @Override
-    public void expel(TeacherDTO teacherDTO) {
-        teacherRepository.deleteById(teacherDTO.getId());
-    }
 
     @Override
     public Optional<TeacherDTO> findTeacher(Long id) {
@@ -110,20 +76,8 @@ public class TeacherServiceImpl implements TeacherService<Long> {
     }
 
     @Override
-    public List<TeacherDTO> findTeachersBySchoolClassName(String name) {
-        // Реализуйте логику поиска преподавателей по названию класса
-        // Вероятно, это потребует использования других репозиториев и сущностей
-        return new ArrayList<>();
-    }
-
-    @Override
-    public List<TeacherDTO> findTeachersBySubjectName(String name) {
-        /*List<Teacher> teachers = teacherSubjectRepository.findTeachersBySubjectName(name);
-        List<TeacherDTO> teacherDTOs = new ArrayList<>();
-        for (Teacher teacher : teachers) {
-            teacherDTOs.add(new TeacherDTO(teacher.getId(), teacher.getName(), teacher.getPosition()));
-        }
-        return teacherDTOs;*/
-        return null;
+    public Optional<TeacherDTO> findAllByPosition(String position) {
+        Optional<Teacher> teacherOptional = teacherRepository.findAllByPosition(position);
+        return teacherOptional.map(teacher -> new TeacherDTO(teacher.getId(),teacher.getName(),teacher.getPosition()));
     }
 }

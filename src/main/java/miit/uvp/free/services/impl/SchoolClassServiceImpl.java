@@ -1,8 +1,10 @@
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
+import miit.uvp.free.dtos.TeacherDTO;
 import miit.uvp.free.models.SchoolClass;
 import miit.uvp.free.models.Student;
+import miit.uvp.free.models.Teacher;
 import miit.uvp.free.repositories.SchoolClassRepository;
 import miit.uvp.free.repositories.StudentRepository;
 import miit.uvp.free.services.SchoolClassService;
@@ -36,12 +38,12 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
     }
 
     @Override
-    public SchoolClassDTO findSchoolClassByStudentId(Long id) {
+    public Optional<SchoolClassDTO> findSchoolClassByStudentId(Long id) {
         Optional<Student> s = studentRepository.findById(id);
         if(s.isPresent()) {
             Student st = s.get();
-            Optional<SchoolClass> schoolClass = schoolClassRepository.findById(st.getSchoolClass().getId());
-            return modelMapper.map(schoolClassRepository.findSchoolClassById(schoolClass.get().getId()),SchoolClassDTO.class);
+            Optional<SchoolClass> schoolClassOptional = schoolClassRepository.findById(st.getSchoolClass().getId());
+            return schoolClassOptional.map(schoolClass -> new SchoolClassDTO(schoolClass.getId(),schoolClass.getName()));
         }
         return null;
     }

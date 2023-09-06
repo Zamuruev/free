@@ -10,13 +10,13 @@ import java.util.Set;
 public class Teacher extends BaseEntity {
 
     // Должность
-    @Column(name = "position")
+
     private String position;
 
-    @OneToMany(mappedBy = "id.teacher", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id.teacher",orphanRemoval = true)
     private Set<TeacherSubject> teacherSubjects;
 
-    @OneToMany(mappedBy = "id.teacher", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id.teacher",orphanRemoval = true)
     private Set<SchoolClassTeacher> schoolClassTeachers;
 
     public Teacher(String position, String name) {
