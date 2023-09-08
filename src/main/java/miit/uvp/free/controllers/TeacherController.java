@@ -34,20 +34,20 @@ public class TeacherController {
 
     @GetMapping("/teacher_schoolclassName/{schoolClassName}")
     List<Teacher> findAllTeachersBySchoolClassName(@PathVariable("schoolClassName") String schoolClassName) {
-        return teacherRepository.findAllTeachersBySchoolClassName(schoolClassName);
+        return teacherService.findAllTeachersBySchoolClassname(schoolClassName);
     }
 
     @GetMapping("/teacher_schoolclassId/{schoolClassId}")
-    List<Teacher> findAllTeachersBySchoolClassId(@PathVariable("schoolClassId")Long schoolClassId){return teacherRepository.findAllTeachersBySchoolClassId(schoolClassId);}
+    List<Teacher> findAllTeachersBySchoolClassId(@PathVariable("schoolClassId")Long schoolClassId){return teacherService.findallTeachersBySchoolClassId(schoolClassId);}
 
     @GetMapping("/teacher_subjectId/{id}")
     List<Teacher> findAllBySubjectId(@PathVariable Long id){
-        return teacherRepository.findAllBySubjectId(id);
+        return teacherService.findallTeachersBySubjectId(id);
     }
 
     @GetMapping("/teacher_subjectName/{subjectName}")
     List<Teacher> findAllBySubjectName(@PathVariable("subjectName") String subjectName) {
-        return teacherRepository.findAllBySubjectName(subjectName);
+        return teacherService.findallTeachersBySubjectName(subjectName);
     }
 
     @GetMapping("/teacher_position/{position}")

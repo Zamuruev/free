@@ -18,5 +18,13 @@ public interface TeacherService<ID> {
 
     Optional<TeacherDTO> findAllByPosition(String position);
 
+    List<Teacher> findallTeachersBySchoolClassId(Long schoolClassId);
+
+    List<Teacher> findallTeachersBySubjectId(Long subjectId);
+
+    List<Teacher> findAllTeachersBySchoolClassname(String schoolclassName);
+
+    List<Teacher> findallTeachersBySubjectName(String subjectName);
+
 }
 

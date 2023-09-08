@@ -1,6 +1,7 @@
 package miit.uvp.free.services.impl;
 
 import miit.uvp.free.dtos.SchoolClassDTO;
+import miit.uvp.free.dtos.StudentDTO;
 import miit.uvp.free.dtos.TeacherDTO;
 import miit.uvp.free.models.SchoolClass;
 import miit.uvp.free.models.SchoolClassTeacher;
@@ -11,8 +12,10 @@ import miit.uvp.free.repositories.TeacherRepository;
 import miit.uvp.free.services.TeacherService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,4 +83,25 @@ public class TeacherServiceImpl implements TeacherService<Long> {
         Optional<Teacher> teacherOptional = teacherRepository.findAllByPosition(position);
         return teacherOptional.map(teacher -> new TeacherDTO(teacher.getId(),teacher.getName(),teacher.getPosition()));
     }
+
+    @Override
+    public List<Teacher> findallTeachersBySchoolClassId(Long schoolClassId){
+        return teacherRepository.findAllTeachersBySchoolClassId(schoolClassId);
+    }
+
+    @Override
+    public List<Teacher> findallTeachersBySubjectId(Long subjectId){
+        return teacherRepository.findAllBySubjectId(subjectId);
+    }
+
+    @Override
+    public List<Teacher> findAllTeachersBySchoolClassname(String schoolclassName){
+        return teacherRepository.findAllTeachersBySchoolClassName(schoolclassName);
+    }
+
+    @Override
+    public List<Teacher> findallTeachersBySubjectName(String subjectName){
+        return teacherRepository.findAllBySubjectName(subjectName);
+    }
+
 }
