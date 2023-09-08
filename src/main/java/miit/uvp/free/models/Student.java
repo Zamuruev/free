@@ -8,8 +8,6 @@ import org.hibernate.annotations.Cascade;
 @Entity
 @Table(name = "students")
 public class Student extends BaseEntity {
-
-    // Основа обучения
     private String learnBasis;
     @ManyToOne(optional = false)
     @JoinColumn(name = "schoolClass_id",referencedColumnName = "id",nullable = false)

@@ -23,19 +23,14 @@ import java.util.Optional;
 
 @Service
 public class TeacherServiceImpl implements TeacherService<Long> {
-
     @Autowired
     private TeacherRepository teacherRepository;
-
     @Autowired
     private ModelMapper modelMapper;
-
     @Autowired
     private SchoolClassTeacherRepository schoolClassTeacherRepository;
-
     @Autowired
     private SchoolClassRepository schoolClassRepository;
-
 
     @Override
     @Transactional
@@ -50,17 +45,12 @@ public class TeacherServiceImpl implements TeacherService<Long> {
 
             schoolClassTeacherRepository.save(schoolClassTeacher);
         }
-
         return new TeacherDTO(savedTeacher.getId(), savedTeacher.getName(), savedTeacher.getPosition());
     }
-
-
-
     @Override
     @Transactional
     public void expel(Long id) {teacherRepository.deleteById(id);
     }
-
 
     @Override
     public Optional<TeacherDTO> findTeacher(Long id) {
@@ -103,5 +93,4 @@ public class TeacherServiceImpl implements TeacherService<Long> {
     public List<Teacher> findallTeachersBySubjectName(String subjectName){
         return teacherRepository.findAllBySubjectName(subjectName);
     }
-
 }

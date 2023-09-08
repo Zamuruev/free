@@ -11,6 +11,5 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student,Long> {
     List<Student>findAllBySchoolClassName(String schoolClassName);
     List<Student>findAllBySchoolClassId(Long id);
-    List<Student>findAllByLearnBasis(String learnBasis);
 }
 

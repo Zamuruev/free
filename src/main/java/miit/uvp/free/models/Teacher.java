@@ -8,9 +8,6 @@ import java.util.Set;
 @Entity
 @Table(name = "teachers")
 public class Teacher extends BaseEntity {
-
-    // Должность
-
     private String position;
 
     @OneToMany(mappedBy = "id.teacher",orphanRemoval = true)

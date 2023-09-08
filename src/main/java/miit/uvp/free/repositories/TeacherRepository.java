@@ -14,7 +14,6 @@ import java.util.Optional;
 public interface TeacherRepository extends JpaRepository<Teacher,Long> {
     Optional<Teacher> findAllByPosition(String position);
     Optional<Teacher>findById(Long id);
-
     @Query("SELECT sct.id.teacher FROM SchoolClassTeacher sct WHERE sct.id.schoolClass.name = :schoolClassName")
     List<Teacher> findAllTeachersBySchoolClassName(@Param("schoolClassName") String schoolClassName);
 

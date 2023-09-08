@@ -26,12 +26,10 @@ public class SchoolClassServiceImpl implements SchoolClassService<Long> {
 
     @Autowired
     private ModelMapper modelMapper;
-
     @Override
     public List<SchoolClassDTO> getAll(){
         return schoolClassRepository.findAll().stream().map((s)->modelMapper.map(s,SchoolClassDTO.class)).collect(Collectors.toList());
     }
-
     @Override
     public Optional<SchoolClassDTO> findSchoolClass(Long id){
         return Optional.ofNullable(modelMapper.map(schoolClassRepository.findById(id),SchoolClassDTO.class));

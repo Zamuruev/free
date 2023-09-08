@@ -8,8 +8,6 @@ import java.util.Set;
 @Entity
 @Table(name = "subjects")
 public class Subject extends BaseEntity {
-
-    // Количество часов
     @Column(name = "counthours", nullable = false)
     private int counthours;
 

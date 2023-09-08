@@ -20,8 +20,6 @@ import java.util.Set;
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
-    @Autowired
-    private TeacherRepository teacherRepository;
     @GetMapping("/teachers")
     Iterable<TeacherDTO> all(){return teacherService.getAll();}
 
@@ -49,7 +47,6 @@ public class TeacherController {
     List<Teacher> findAllBySubjectName(@PathVariable("subjectName") String subjectName) {
         return teacherService.findallTeachersBySubjectName(subjectName);
     }
-
     @GetMapping("/teacher_position/{position}")
     TeacherDTO one(@PathVariable String position) throws Throwable { return (TeacherDTO) teacherService.findAllByPosition(position)
             .orElseThrow(() -> new TeacherNotFoundException2(position));}

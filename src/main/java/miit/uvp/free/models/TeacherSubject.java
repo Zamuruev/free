@@ -8,7 +8,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "teacher_subject")
 public class TeacherSubject {
-
     @Embeddable
     public static class TeacherSubjectId implements Serializable {
         @ManyToOne
